@@ -4,7 +4,8 @@ public class Deck{
 
 	private int value;
 	private String name;
-	
+	Random random = new Random();
+
 	Card[] cards = new Card[52];
 	public Deck() {
 		for (int i=1; i<=13; i++) {
@@ -41,17 +42,18 @@ public class Deck{
 			cards[c+38] = clubs;
 
 		}
-
+		shuffle();
+		print();
 	}
 
-	public void Shuffle(){
+	public void shuffle(){
 
 		
 		for (int i = cards.length - 1; i>0; i--) {
 			Card a = cards[i];
 			int temp = random.nextInt(i);
-			cards[temp] = cards[i];
-			cards[i] = a;
+			cards[i] = cards[temp];
+			cards[temp] = a;
 		}
 	}
 
@@ -61,15 +63,8 @@ public class Deck{
 
 	public void print(){
 		for (int i=0; i<cards.length; i++) {
-			System.out.println(cards[i].getValue() + cards[i].getSuit());
+			System.out.println(cards[i].getValue() + " of " + cards[i].getSuit());
 		}
 	}
-			
-		
-
-	
-
-	
-
 	
 }
