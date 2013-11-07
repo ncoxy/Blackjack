@@ -66,5 +66,7 @@ public class Deck{
 			System.out.println(cards[i].getValue() + " of " + cards[i].getSuit());
 		}
 	}
+
+
 	
 }

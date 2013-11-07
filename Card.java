@@ -16,18 +16,43 @@ public class Card{
 	private int value2;
 	private String suit;
 	private int facenumber;
+	private String name;
 	int[] values = {1,2,3,4,5,6,7,8,9,10,11,12,13};
 
-	public Card(int value, String suit){
+	public Card(int facenumber, int value, String suit){
 		this.suit = suit;
 		this.value = value;
-		// System.out.println("" + this.value + "of " + suit);
+		this.facenumber = facenumber;
+		this.image = Card.loadImage(getFaceNumber() + suit);
+
 	}
 
-	public Card(int value, int value2, String suit) {
+	public Card(int facenumber, int value, int value2, String suit) {
 		this.suit = suit;
 		this.value = value;
 		this.value2 = value2;
+		this.facenumber = facenumber;
+		this.image = Card.loadImage(getFaceNumber() + suit);
+	}
+
+	public String getFaceNumber() {
+
+		if (facenumber == 1) {
+			return "A";
+
+		}else if (this.facenumber > 1 && this.facenumber <= 10) {
+			return "" + this.facenumber;
+
+		}else if (this.facenumber == 11) {
+			return "J";
+
+		}else if (this.facenumber == 12) {
+			return "Q";
+
+		}else if (this.facenumber == 13) {
+			return "K";
+
+		}
 	}
 	public int getValue(){
 		return this.value;
@@ -44,31 +69,38 @@ public class Card{
 	public void setSuit(String suit) {
 		this.suit = suit;
 	}
+
+	public int getFace(){
+		return this.facenumber;
+	}
+
+	public void setFace(int facenumber) {
+		this.facenumber = facenumber;
+	} 
+
+	public void draw (Graphics g, Rectangle r) {
+		g.drawImage(image, r.x, r.y, r.width, r.height, null);
+	}
 	
 
 
-	private static Image loadImage(String value, String suit) {
+	private static Image loadImage(String name) {
 		
 		String path = null;
 		Image image = null;
 
 		try {
-			path = "cards" + File.separator + value + suit + ".png";
-			// path = "images/a;ldsfkja;";
+			path = "Cards" + File.separator + name + ".png";
 			image = ImageIO.read(new File(path));
 		}catch(IOException e) {
+
 			System.out.println("Could not load image at path" + path);
 			System.exit(1);
 		}
 		return image;
-		}
+		
 
 	}
-
-
-
-
-
 
 
 
