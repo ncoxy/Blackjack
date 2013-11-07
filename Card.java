@@ -17,6 +17,7 @@ public class Card{
 	private String suit;
 	private int facenumber;
 	private String name;
+	private Image image;
 	int[] values = {1,2,3,4,5,6,7,8,9,10,11,12,13};
 
 	public Card(int facenumber, int value, String suit){
@@ -51,7 +52,8 @@ public class Card{
 
 		}else if (this.facenumber == 13) {
 			return "K";
-
+		}else{
+			return "";
 		}
 	}
 	public int getValue(){
