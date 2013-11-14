@@ -1,21 +1,41 @@
-// public class Hand {
+import java.awt.Graphics;
 
-// 	Card[] hand = new Card[11];
-// 	private Deck cards;
 
-// 	public Hand(){
+public class Hand {
+
+	private int amountOfCards;
+	private int totalValue = 0;
+	Card[] hand = new Card[11];
+	private Deck cards;
+
+	public Hand(Deck cards, Graphics g, int xOffset){
+		Card[] hand = new Card[11];
+		this.cards = cards;	
 		
-// 		for (int i = 0; i<11; i++) {
-// 			int totalValue = 0;
-// 			totalValue += cards[i].getValue();
+		for (int i=0; i<hand.length; i++) {
+			if (totalValue < 21) {
+				dealPlayer(g, 1);
 
-// 			if (totalValue < 21) {
-// 				hand[i] = cards[i];
-				
-// 			}
+			}
+			totalValue += cards.getValue();
+			xOffset += 25;
+		}
+		this.amountOfCards = 0;
+	}
 
-// 		}
+	public void dealPlayer(Graphics g, int number){
+		cards.draw(g, 0, 50, 2);
+		cards.draw(g, 0, 100, 3);
+	}
 
-// 	}
+	public void dealDealer(Graphics g, int number){
+		cards.draw(g, 0, 200, 4);
+	}
 
-// }
+	public void draw(Graphics g){
+		for (int i = 0; i<amountOfCards; i++) {
+			this.hand[i].draw(g, new Rectangle(x, 50, 200, 300));
+		}
+	}
+
+}
