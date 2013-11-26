@@ -35,7 +35,7 @@ public class Hand {
 			xOffset += 50;
 			
 		}
-		g.drawString( "Dealer Total:" + this.getValue(), 40, 820);
+		g.drawString( "Dealer", 40, 820);
 	}
 	public void drawDealer(Graphics g){
 		int xOffset = 25;
@@ -43,7 +43,7 @@ public class Hand {
 			maxCards[i].draw(g, new Rectangle(xOffset, 500, 200, 300));
 				xOffset += 50;
 		}
-		g.drawString( "Dealer Total:" + this.getValue(), 40, 820);
+		g.drawString( "Dealer", 40, 820);	
 	}
 	public int getValue() {
 		int total = 0;
