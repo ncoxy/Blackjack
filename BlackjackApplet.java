@@ -37,11 +37,6 @@ public class BlackjackApplet extends Applet implements ActionListener{
             dealer.addACard(table.deal());
             playerTotal = player.getValue();
             dealerTotal = dealer.getValue();
-            hit.setEnabled(false);
-            stay.setEnabled(false);
-            bet.setEnabled(true);
-            reset.setEnabled(true);
-            down.setEnabled(false);
         }
         public void init() {
 
@@ -119,13 +114,6 @@ public class BlackjackApplet extends Applet implements ActionListener{
             this.add(dealerwin);
 
 
-            hit.setEnabled(false);
-            stay.setEnabled(false);
-            bet.setEnabled(true);
-            reset.setEnabled(true);
-            down.setEnabled(false);
-
-
         }
         public int getWallet() {
             return this.wallet;
@@ -158,140 +146,125 @@ public class BlackjackApplet extends Applet implements ActionListener{
             int dealerTotal = dealer.getValue();
             if("Hit".equals(ae.getActionCommand())) {
 
-                         if(playerTotal < 21) {
-                                 player.addACard(table.deal());
-                                 repaint();
-                         }
-                         playerTotal = player.getValue();
-                           if(playerTotal > 21) {
-                                          setWallet(getWallet() - getpot());
-                                          score.setText("You Busted! Dealer Wins");
-                                          dealerWin++;
-                          }else if(playerTotal == 21) {
-                                  setWallet(getWallet() + getpot());
-                                  score.setText("21!!!!");
-                                  playerWin++;
-                          }
-                          //else if(playerTotal > dealerTotal && dealerTotal < 21 && playerTotal <=21) {
-                         //         setWallet(getWallet() + getpot());
-                         //         score.setText("You Win!!!!");
-                         // }else if(dealerTotal > playerTotal && dealerTotal <=21 && playerTotal < 21) {
-                         //         setWallet(getWallet() - getpot());
-                         //         score.setText("You Lost");
-                         // }else if (dealerTotal == playerTotal) {
-                         //         setWallet(getWallet());
-                         //         score.setText("Draw");
-                         // }
-                         }else if("Stay".equals(ae.getActionCommand())) {
-                         int dealertotal = dealer.getValue();
-                         front = true;
-                         while(dealertotal < 16 ) {
-                                 dealer.addACard(table.deal());
-                                 dealertotal = dealer.getValue();
-                                 repaint();
+                if(playerTotal < 21) {
+                    player.addACard(table.deal());
+                    repaint();
+                }
+                playerTotal = player.getValue();
+                if(playerTotal > 21) {
+                    setWallet(getWallet() - getpot());
+                    score.setText("You Busted! Dealer Wins");
+                    dealerWin++;
+                }else if(playerTotal == 21) {
+                    setWallet(getWallet() + getpot());
+                    score.setText("21!!!!");
+                    playerWin++;
+                }
+                }else if("Stay".equals(ae.getActionCommand())) {
+                    int dealertotal = dealer.getValue();
+                    front = true;
+                    while(dealertotal < 16 ) {
+                        dealer.addACard(table.deal());
+                        dealertotal = dealer.getValue();
+                        repaint();
 
-                                 if(playerTotal > 21) {
-                                         setWallet(getWallet() - getpot());
-                                         score.setText("You Busted! Dealer Wins");
-                                         dealerWin++;
-                         }else if(playerTotal == 21) {
-                                 setWallet(getWallet() + getpot());
-                                 score.setText("21!!!!");
-                                 playerWin++;
-                         }else if(playerTotal > dealerTotal && dealerTotal < 21 && playerTotal <=21) {
-                                 setWallet(getWallet() + getpot());
-                                 score.setText("You Win!!!!");
-                                 playerWin++;
-                         }else if(dealerTotal > playerTotal && dealerTotal <=21 && playerTotal < 21) {
-                                 setWallet(getWallet() - getpot());
-                                 score.setText("You Lost");
-                                 dealerWin++;
-                         }else if (dealerTotal == playerTotal) {
-                                 setWallet(getWallet());
-                                 score.setText("Draw");
-                         }
-                         } if( dealertotal <= 21 && dealertotal >= 16) {
-                                 dealertotal = dealer.getValue();
-                                 repaint();
+                        if(playerTotal > 21) {
+                            setWallet(getWallet() - getpot());
+                            score.setText("You Busted! Dealer Wins");
+                            dealerWin++;
+                        }else if(playerTotal == 21) {
+                            setWallet(getWallet() + getpot());
+                            score.setText("21!!!!");
+                            playerWin++;
+                        }else if(playerTotal > dealerTotal && dealerTotal < 21 && playerTotal <=21) {
+                            setWallet(getWallet() + getpot());
+                            score.setText("You Win!!!!");
+                            playerWin++;
+                        }else if(dealerTotal > playerTotal && dealerTotal <=21 && playerTotal < 21) {
+                            setWallet(getWallet() - getpot());
+                            score.setText("You Lost");
+                            dealerWin++;
+                        }else if (dealerTotal == playerTotal) {
+                            setWallet(getWallet());
+                            score.setText("Draw");
+                        }
+                        } if( dealertotal <= 21 && dealertotal >= 16) {
+                            dealertotal = dealer.getValue();
+                            repaint();
 
 
-                                 if(playerTotal > 21) {
-                                         setWallet(getWallet() - getpot());
-                                         score.setText("You Busted! Dealer Wins");
-                                         dealerWin++;
-                         }else if(playerTotal == 21) {
-                                 setWallet(getWallet() + getpot());
-                                 score.setText("21!!!!");
-                                 playerWin++;
-                         }else if(playerTotal > dealerTotal && dealerTotal < 21 && playerTotal <=21) {
-                                 setWallet(getWallet() + getpot());
-                                 score.setText("You Win!!!!");
-                                 playerWin++;
-                         }else if(dealerTotal > playerTotal && dealerTotal <=21 && playerTotal < 21) {
-                                 setWallet(getWallet() - getpot());
-                                 score.setText("You Lost");
-                                 dealerWin++;
-                         }else if (dealerTotal == playerTotal) {
-                                 setWallet(getWallet());
-                                 score.setText("Draw");
-                         }
-                         }
+                            if(playerTotal > 21) {
+                                setWallet(getWallet() - getpot());
+                                score.setText("You Busted! Dealer Wins");
+                                dealerWin++;
+                        }else if(playerTotal == 21) {
+                            setWallet(getWallet() + getpot());
+                            score.setText("21!!!!");
+                            playerWin++;
+                        }else if(playerTotal > dealerTotal && dealerTotal < 21 && playerTotal <=21) {
+                            setWallet(getWallet() + getpot());
+                            score.setText("You Win!!!!");
+                            playerWin++;
+                        }else if(dealerTotal > playerTotal && dealerTotal <=21 && playerTotal < 21) {
+                            setWallet(getWallet() - getpot());
+                            score.setText("You Lost");
+                            dealerWin++;
+                        }else if (dealerTotal == playerTotal) {
+                            setWallet(getWallet());
+                            score.setText("Draw");
+                        }
+                        }
 
-                 }else if("New Game".equals(ae.getActionCommand())) {
-                         front = false;
-                         setWallet(getWallet());
-                         walletLabel.setText("You have $" + getWallet() + " dollars.");
-                         playerwin.setText("Player Wins: " + playerWin);
-                         dealerwin.setText("Dealer Wins: " + dealerWin);
-                         startinit();
-                         potLabel.setText("There is $" + getpot() + " in the pot.");
-                         repaint();
+                }else if("New Game".equals(ae.getActionCommand())) {
+                    front = false;
+                    setWallet(getWallet());
+                    walletLabel.setText("You have $" + getWallet() + " dollars.");
+                    playerwin.setText("Player Wins: " + playerWin);
+                    dealerwin.setText("Dealer Wins: " + dealerWin);
+                    startinit();
+                    potLabel.setText("There is $" + getpot() + " in the pot.");
+                    repaint();
+ 
+                }
+                if("Double Down".equals(ae.getActionCommand())) {
+                    setWallet(getWallet() - playerBet);
+                    walletLabel.setText("You have $" + getWallet() + " dollars.");
+                    setPot(getpot() + playerBet);
+                    potLabel.setText("There is $" + getpot() + " in the pot.");
 
-                         
-                 }
-                 if("Double Down".equals(ae.getActionCommand())) {
-                         setWallet(getWallet() - playerBet);
-                         walletLabel.setText("You have $" + getWallet() + " dollars.");
-                         setPot(getpot() + playerBet);
-                         potLabel.setText("There is $" + getpot() + " in the pot.");
+                    player.addACard(table.deal());
+                    repaint();
 
-                         player.addACard(table.deal());
-                         repaint();
+                    playerTotal = player.getValue();
+                    if(playerTotal > 21) {
+                        setWallet(getWallet() - getpot());
+                        score.setText("You Busted! Dealer Wins");
 
-                         playerTotal = player.getValue();
-                         if(playerTotal > 21) {
-                                 setWallet(getWallet() - getpot());
-                                 score.setText("You Busted! Dealer Wins");
+                        }else if (playerTotal == 21) {
+                            setWallet(getWallet() + getpot());
+                            score.setText("21!!!!");
+                        }else if (playerTotal > dealerTotal && dealerTotal < 21 && playerTotal <=21) {
+                            setWallet(getWallet() + getpot());
+                            score.setText("You Win!!!!");
+                        }else if (dealerTotal > playerTotal && dealerTotal <= 21 && playerTotal < 21) {
+                            setWallet(getWallet() - getpot());
+                            score.setText("You Lost.");
+                        }else if(dealerTotal == playerTotal) {
+                            setWallet(getWallet());
+                            score.setText("Draw");
+                        }
+                        repaint();
 
-                         }else if (playerTotal == 21) {
-                                 setWallet(getWallet() + getpot());
-                                 score.setText("21!!!!");
-                         }else if (playerTotal > dealerTotal && dealerTotal < 21 && playerTotal <=21) {
-                                 setWallet(getWallet() + getpot());
-                                 score.setText("You Win!!!!");
-                         }else if (dealerTotal > playerTotal && dealerTotal <= 21 && playerTotal < 21) {
-                                 setWallet(getWallet() - getpot());
-                                 score.setText("You Lost.");
-                         }else if(dealerTotal == playerTotal) {
-                                 setWallet(getWallet());
-                                 score.setText("Draw");
-                         }
-                         repaint();
-
-                 }
-                 if("Bet $10".equals(ae.getActionCommand())) {
-                         hit.setEnabled(true);
-                         stay.setEnabled(true);
-                         reset.setEnabled(true);
-                         down.setEnabled(true);
-
-                         setWallet(getWallet() - 10);
-                         walletLabel.setText("You have $" + getWallet() + " dollars.");
-                         setPot(getpot() + 20);
-                         potLabel.setText("There is $" + getpot() + " in the pot.");
-                         playerBet += 10;
-                         repaint();
-                 }
+                }
+                if("Bet $10".equals(ae.getActionCommand())) {
+                        
+                    setWallet(getWallet() - 10);
+                    walletLabel.setText("You have $" + getWallet() + " dollars.");
+                    setPot(getpot() + 20);
+                    potLabel.setText("There is $" + getpot() + " in the pot.");
+                    playerBet += 10;
+                    repaint();
+                }
 
 
 
@@ -308,8 +281,6 @@ public class BlackjackApplet extends Applet implements ActionListener{
                         dealer.drawDealerFirst(g);
                 }
 
-                
-                //g.drawString(answer, 200, 400);
         }
 
 
