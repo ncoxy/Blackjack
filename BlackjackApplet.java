@@ -11,8 +11,6 @@ public class BlackjackApplet extends Applet implements ActionListener{
         private JLabel win,lost, walletLabel, potLabel, score;
         private String answer;
 
-
-
         private Deck table;
         private Hand player;
         private Hand dealer;
@@ -23,144 +21,142 @@ public class BlackjackApplet extends Applet implements ActionListener{
         private boolean front = false;
         private JLabel playerwin,dealerwin;
 
-
         public void startinit() {
-                        score.setText("                                     Currently Playing");
+            score.setText("                                     Currently Playing");
 
-                        playerBet = 0;
-                        setPot(0);
-                         int total = 0;
-                        table = new Deck();
-                        player = new Hand();
-                        dealer = new Hand();
-                        table.shuffle();
-                        player.addACard(table.deal());
-                        dealer.addACard(table.deal());
-                        player.addACard(table.deal());
-                        dealer.addACard(table.deal());
-                         playerTotal = player.getValue();
-                         dealerTotal = dealer.getValue();
-                         hit.setEnabled(false);
-                         stay.setEnabled(false);
-                         bet.setEnabled(true);
-                         reset.setEnabled(true);
-                         down.setEnabled(false);
+            playerBet = 0;
+            setPot(0);
+            int total = 0;
+            table = new Deck();
+            player = new Hand();
+            dealer = new Hand();
+            table.shuffle();
+            player.addACard(table.deal());
+            dealer.addACard(table.deal());
+            player.addACard(table.deal());
+            dealer.addACard(table.deal());
+            playerTotal = player.getValue();
+            dealerTotal = dealer.getValue();
+            hit.setEnabled(false);
+            stay.setEnabled(false);
+            bet.setEnabled(true);
+            reset.setEnabled(true);
+            down.setEnabled(false);
         }
         public void init() {
-                
 
-                setWallet(1000);
-                setPot(0);
+            setWallet(1000);
+            setPot(0);
 
                 //super();
 
 
-                int total = 0;
-                table = new Deck();
-                player = new Hand();
-                dealer = new Hand();
-                table.shuffle();
-                player.addACard(table.deal());
-                dealer.addACard(table.deal());
-                player.addACard(table.deal());
-                dealer.addACard(table.deal());
+            int total = 0;
+            table = new Deck();
+            player = new Hand();
+            dealer = new Hand();
+            table.shuffle();
+            player.addACard(table.deal());
+            dealer.addACard(table.deal());
+            player.addACard(table.deal());
+            dealer.addACard(table.deal());
 
 
-                walletLabel = new JLabel("You have $" + wallet + " dollars.");
-                walletLabel.setFont(new Font("sansserif", Font.BOLD, 24));
-                this.add(walletLabel);
+            walletLabel = new JLabel("You have $" + wallet + " dollars.");
+            walletLabel.setFont(new Font("sansserif", Font.BOLD, 24));
+            this.add(walletLabel);
 
-                potLabel = new JLabel("There is $" + getpot() + " in the pot");
-                potLabel.setFont(new Font("sansserif", Font.BOLD, 24));
-                this.add(potLabel);
+            potLabel = new JLabel("There is $" + getpot() + " in the pot");
+            potLabel.setFont(new Font("sansserif", Font.BOLD, 24));
+            this.add(potLabel);
 
                 
 
 
         
 
-                String title = "Hit";
+            String title = "Hit";
 
-                hit = new JButton(title);
-                hit.setActionCommand(title);
-                hit.addActionListener(this);
-                this.add(hit);
+            hit = new JButton(title);
+            hit.setActionCommand(title);
+            hit.addActionListener(this);
+            this.add(hit);
 
-                title = "Stay";
-                stay = new JButton(title);
-                stay.setActionCommand(title);
-                stay.addActionListener(this);
-                this.add(stay);
+            title = "Stay";
+            stay = new JButton(title);
+            stay.setActionCommand(title);
+            stay.addActionListener(this);
+            this.add(stay);
 
-                title = "Bet $10";
-                bet = new JButton(title);
-                bet.setActionCommand(title);
-                bet.addActionListener(this);
-                this.add(bet);
+            title = "Bet $10";
+            bet = new JButton(title);
+            bet.setActionCommand(title);
+            bet.addActionListener(this);
+            this.add(bet);
 
-                title = "Double Down";
-                down = new JButton(title);
-                down.setActionCommand(title);
-                down.addActionListener(this);
-                this.add(down);
+            title = "Double Down";
+            down = new JButton(title);
+            down.setActionCommand(title);
+            down.addActionListener(this);
+            this.add(down);
                 
-                title = "New Game";
-                reset = new JButton(title);
-                reset.setActionCommand(title);
-                reset.addActionListener(this);
-                this.add(reset);
+            title = "New Game";
+            reset = new JButton(title);
+            reset.setActionCommand(title);
+            reset.addActionListener(this);
+            this.add(reset);
 
-                score = new JLabel("                                     Currently Playing");
-                score.setFont(new Font("sansserif", Font.BOLD, 24));
-                this.add(score);
+            score = new JLabel("                                     Currently Playing");
+            score.setFont(new Font("sansserif", Font.BOLD, 24));
+            this.add(score);
 
-                playerwin = new JLabel("Player Wins: " + playerWin);
-                playerwin.setFont(new Font("sansserif", Font.BOLD, 24));
-                this.add(playerwin);
+            playerwin = new JLabel("Player Wins: " + playerWin);
+            playerwin.setFont(new Font("sansserif", Font.BOLD, 24));
+            this.add(playerwin);
 
-                dealerwin = new JLabel("Dealer Wins: " + dealerWin);
-                dealerwin.setFont(new Font("sansserif", Font.BOLD, 24));
-                this.add(dealerwin);
+            dealerwin = new JLabel("Dealer Wins: " + dealerWin);
+            dealerwin.setFont(new Font("sansserif", Font.BOLD, 24));
+            this.add(dealerwin);
 
 
-                hit.setEnabled(false);
-                stay.setEnabled(false);
-                bet.setEnabled(true);
-                reset.setEnabled(true);
-                down.setEnabled(false);
+            hit.setEnabled(false);
+            stay.setEnabled(false);
+            bet.setEnabled(true);
+            reset.setEnabled(true);
+            down.setEnabled(false);
 
 
         }
         public int getWallet() {
-                return this.wallet;
+            return this.wallet;
         }
         public void setWallet(int wallet) {
-                this.wallet = wallet;
+            this.wallet = wallet;
         }
         public int getpot() {
-                return this.pot;
+            return this.pot;
         }
         public void setPot(int pot) {
-                this.pot = pot;
+            this.pot = pot;
         }
 
         public Deck getTable() {
-                return this.table;
+            return this.table;
         }
         public Hand getPlayer() {
-                return this.player;
+            return this.player;
         }
         public void setTable(Deck table) {
-                this.table = table;
+            this.table = table;
         }
         public void setPlayer(Hand player) {
-                this.player = player;
+            this.player = player;
         }
 
         public void actionPerformed(ActionEvent ae) {
-                int playerTotal = player.getValue();
-                int dealerTotal = dealer.getValue();
-                 if("Hit".equals(ae.getActionCommand())) {
+            int playerTotal = player.getValue();
+            int dealerTotal = dealer.getValue();
+            if("Hit".equals(ae.getActionCommand())) {
 
                          if(playerTotal < 21) {
                                  player.addACard(table.deal());
